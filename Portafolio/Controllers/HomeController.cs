@@ -12,19 +12,21 @@ namespace Portafolio.Controllers
         {
             return View();
         }
-
-        public ActionResult About()
+        public PartialViewResult inicio()
         {
-            ViewBag.Message = "Your application description page.";
-
-            return View();
+            return PartialView();
         }
-
-        public ActionResult Contact()
+        public PartialViewResult portafolio()
         {
-            ViewBag.Message = "Your contact page.";
-
-            return View();
+            return PartialView();
+        }
+        public PartialViewResult skill()
+        {
+            return PartialView();
+        }
+        public PartialViewResult nosotros()
+        {
+            return PartialView();
         }
     }
 }

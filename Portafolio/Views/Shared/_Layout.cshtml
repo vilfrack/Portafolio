@@ -7,13 +7,9 @@
     @Styles.Render("~/Content/css")
     @Styles.Render("~/Content/Bars")
     @Scripts.Render("~/bundles/jquery")
-    @Scripts.Render("~/bundles/modernizr")
+    @*@Scripts.Render("~/bundles/modernizr")*@
     @Scripts.Render("~/plugin")
-    @Scripts.Render("~/main")
-    @*<link rel="stylesheet" href="css/bootstrap.min.css">
-    <link rel="stylesheet" href="css/styles.css">
-    <link rel="stylesheet" href="css/bars.css">*@
-    @*<link rel="stylesheet" href="~/Content/bars.css">*@
+
 </head>
 <body>
     <header id="cabecera" class="cabecera">
@@ -35,24 +31,14 @@
             </div>
         </div>
     </header>
-    @RenderBody();
+    @RenderBody()
 
     <script>
         //smoothscrolling
-    $(function () {
-        $(".menu a").smoothscrolling();
-    })
-
+        $(function () {
+            $(".menu a").smoothscrolling();
+        })
     </script>
-    @*<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
-    <script src="js/jquery.circlechart.js"></script>
-    <script src="js/skill.js"></script>
-    <script src="js/jquery.appear.js"></script>
-    <script src="js/custom.js"></script>
-    <script src="js/jquery.mixitup.js"></script>
-    <script src="js/smoothscrolling.jquery.js"></script>
-    <script src="js/main.js"></script>*@
 
 </body>
 </html>

@@ -171,9 +171,6 @@
     <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
-    <Compile Include="Controllers\PerfilController.cs" />
-    <Compile Include="Controllers\PortafolioController.cs" />
-    <Compile Include="Controllers\SkillController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -219,7 +216,6 @@
     <Content Include="Scripts\Plugin\jquery.appear.js" />
     <Content Include="Scripts\Plugin\jquery.circlechart.js" />
     <Content Include="Scripts\Plugin\jquery.mixitup.js" />
-    <Content Include="Scripts\Plugin\main.js" />
     <Content Include="Scripts\Plugin\skill.js" />
     <Content Include="Scripts\Plugin\smoothscrolling.jquery.js" />
     <Content Include="Scripts\respond.js" />
@@ -236,8 +232,6 @@
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Home\About.cshtml" />
-    <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Account\_ExternalLoginsListPartial.cshtml" />
     <Content Include="Views\Account\ConfirmEmail.cshtml" />
@@ -264,9 +258,11 @@
     <Content Include="Views\Admin\BackEnd.cshtml" />
     <Content Include="Views\Admin\FrontEnd.cshtml" />
     <Content Include="Views\Admin\Movil.cshtml" />
-    <Content Include="Views\Perfil\Index.cshtml" />
     <Content Include="Views\Skill\Index.cshtml" />
-    <Content Include="Views\Portafolio\Index.cshtml" />
+    <Content Include="Views\Home\inicio.cshtml" />
+    <Content Include="Views\Home\portafolio.cshtml" />
+    <Content Include="Views\Home\skill.cshtml" />
+    <Content Include="Views\Home\nosotros.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

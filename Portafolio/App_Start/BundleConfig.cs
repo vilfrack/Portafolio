@@ -11,24 +11,13 @@ namespace Portafolio
             bundles.Add(new ScriptBundle("~/bundles/jquery").Include(
                         "~/Scripts/jquery-{version}.js"));
 
-            bundles.Add(new ScriptBundle("~/bundles/jqueryval").Include(
-                        "~/Scripts/jquery.validate*"));
-
             bundles.Add(new ScriptBundle("~/plugin").Include(
             "~/Scripts/Plugin/skill.js",
             "~/Scripts/Plugin/jquery.circlechart.js",
-            "~/Scripts/Plugin/jquery.mixitup.js",
+            "~/Scripts/Plugin/jquery.mixitup.js",//filtro para el portafolio
             "~/Scripts/Plugin/custom.js",
             "~/Scripts/Plugin/smoothscrolling.jquery.js",
             "~/Scripts/Plugin/jquery.appear.js"));
-
-            bundles.Add(new ScriptBundle("~/main").Include(
-                        "~/Scripts/Plugin/main.js"));
-
-            // Use the development version of Modernizr to develop with and learn from. Then, when you're
-            // ready for production, use the build tool at http://modernizr.com to pick only the tests you need.
-            bundles.Add(new ScriptBundle("~/bundles/modernizr").Include(
-                        "~/Scripts/modernizr-*"));
 
             bundles.Add(new ScriptBundle("~/bundles/bootstrap").Include(
                       "~/Scripts/bootstrap.js",
@@ -40,10 +29,6 @@ namespace Portafolio
 
             bundles.Add(new StyleBundle("~/Content/Bars").Include(
               "~/Content/bars.css"));
-
-
-
-
         }
     }
 }
