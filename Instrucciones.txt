@@ -1,0 +1,1 @@
+1) se crea la tabla de perfil,skill,portafolio

@@ -9,6 +9,11 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "01 Utilidades", "02 Utilida
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebApi", "WebApi\WebApi.csproj", "{FF198C97-08CE-44EA-A2B5-EAA9E1430222}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{E8EAEEF2-6C6F-4528-AE55-A7C610DD7A85}"
+	ProjectSection(SolutionItems) = preProject
+		Instrucciones.txt = Instrucciones.txt
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU

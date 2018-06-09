@@ -254,15 +254,11 @@
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Shared\_LayoutAdmin.cshtml" />
-    <Content Include="Views\Admin\Index.cshtml" />
-    <Content Include="Views\Admin\BackEnd.cshtml" />
-    <Content Include="Views\Admin\FrontEnd.cshtml" />
-    <Content Include="Views\Admin\Movil.cshtml" />
-    <Content Include="Views\Skill\Index.cshtml" />
     <Content Include="Views\Home\inicio.cshtml" />
     <Content Include="Views\Home\portafolio.cshtml" />
     <Content Include="Views\Home\skill.cshtml" />
     <Content Include="Views\Home\nosotros.cshtml" />
+    <Content Include="Views\Admin\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
