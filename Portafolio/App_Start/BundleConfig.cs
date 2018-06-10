@@ -9,15 +9,14 @@ namespace Portafolio
         public static void RegisterBundles(BundleCollection bundles)
         {
             bundles.Add(new ScriptBundle("~/bundles/jquery").Include(
-                        "~/Scripts/jquery-{version}.js"));
+                        "~/Scripts/jquery-3.3.1.min.js"));
 
             bundles.Add(new ScriptBundle("~/plugin").Include(
-            "~/Scripts/Plugin/skill.js",
-            "~/Scripts/Plugin/jquery.circlechart.js",
             "~/Scripts/Plugin/jquery.mixitup.js",//filtro para el portafolio
-            "~/Scripts/Plugin/custom.js",
-            "~/Scripts/Plugin/smoothscrolling.jquery.js",
-            "~/Scripts/Plugin/jquery.appear.js"));
+            "~/Scripts/Plugin/smoothscrolling.jquery.js"));
+
+            bundles.Add(new ScriptBundle("~/bundles/modernizr").Include(
+            "~/Scripts/modernizr-*"));
 
             bundles.Add(new ScriptBundle("~/bundles/bootstrap").Include(
                       "~/Scripts/bootstrap.js",
@@ -27,8 +26,9 @@ namespace Portafolio
                       "~/Content/bootstrap.css",
                       "~/Content/styles.css"));
 
-            bundles.Add(new StyleBundle("~/Content/Bars").Include(
-              "~/Content/bars.css"));
+            bundles.Add(new StyleBundle("~/Content/AdminCss").Include(
+                     "~/Content/bootstrap.css",
+                     "~/Content/Site.css"));
         }
     }
 }

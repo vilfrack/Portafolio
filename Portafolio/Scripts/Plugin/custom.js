@@ -1,11 +1,11 @@
 
 jQuery(function () {
 	"use strict";
-    
-    /*global jQuery $*/ 
-	//Slider 
+
+    /*global jQuery $*/
+	//Slider
 	$(document).ready(function(){
-		
+
 		jQuery('.skillbar').each(function() {
 			jQuery(this).appear(function() {
 				jQuery(this).find('.count-bar').animate({
@@ -14,7 +14,7 @@ jQuery(function () {
 				var percent = jQuery(this).attr('data-percent');
 				jQuery(this).find('.count').html('<span>' + percent + '</span>');
 			});
-		});	
+		});
 	});
-	
+
 }());

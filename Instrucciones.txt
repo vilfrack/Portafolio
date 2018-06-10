@@ -1,1 +1,2 @@
 1) se crea la tabla de perfil,skill,portafolio
+2) se crea el controlador de perfiles una vez este creado el de admin

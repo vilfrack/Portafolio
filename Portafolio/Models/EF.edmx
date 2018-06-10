@@ -1,0 +1,254 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="PortafolioModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Etiqueta">
+          <Key>
+            <PropertyRef Name="IDEtiqueta" />
+          </Key>
+          <Property Name="IDEtiqueta" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Etiqueta" Type="varchar" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="MaestroEtiquetaPorta">
+          <Key>
+            <PropertyRef Name="IDMaestroEtiquetaPorta" />
+          </Key>
+          <Property Name="IDMaestroEtiquetaPorta" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IDPortafolio" Type="int" />
+          <Property Name="IDEtiqueta" Type="int" />
+        </EntityType>
+        <EntityType Name="Perfil">
+          <Key>
+            <PropertyRef Name="IDPerfil" />
+          </Key>
+          <Property Name="IDPerfil" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Titular" Type="varchar" MaxLength="50" />
+          <Property Name="Extracto" Type="varchar" MaxLength="200" />
+          <Property Name="ImgTitular" Type="varchar" MaxLength="100" />
+          <Property Name="ImgExtracto" Type="varchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="Portafolio">
+          <Key>
+            <PropertyRef Name="IDPortafolio" />
+          </Key>
+          <Property Name="IDPortafolio" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ImgPortafolio" Type="varchar" MaxLength="100" />
+          <Property Name="Resumen" Type="varchar" MaxLength="50" />
+          <Property Name="Link" Type="varchar" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="Skill">
+          <Key>
+            <PropertyRef Name="IDSkill" />
+          </Key>
+          <Property Name="IDSkill" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="skill" Type="varchar" MaxLength="10" />
+          <Property Name="porcentaje" Type="int" />
+        </EntityType>
+        <Association Name="FK_MaestroEtiquetaPorta_Etiqueta">
+          <End Role="Etiqueta" Type="Self.Etiqueta" Multiplicity="0..1" />
+          <End Role="MaestroEtiquetaPorta" Type="Self.MaestroEtiquetaPorta" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Etiqueta">
+              <PropertyRef Name="IDEtiqueta" />
+            </Principal>
+            <Dependent Role="MaestroEtiquetaPorta">
+              <PropertyRef Name="IDEtiqueta" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MaestroEtiquetaPorta_Portafolio">
+          <End Role="Portafolio" Type="Self.Portafolio" Multiplicity="0..1" />
+          <End Role="MaestroEtiquetaPorta" Type="Self.MaestroEtiquetaPorta" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Portafolio">
+              <PropertyRef Name="IDPortafolio" />
+            </Principal>
+            <Dependent Role="MaestroEtiquetaPorta">
+              <PropertyRef Name="IDPortafolio" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="PortafolioModelStoreContainer">
+          <EntitySet Name="Etiqueta" EntityType="Self.Etiqueta" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MaestroEtiquetaPorta" EntityType="Self.MaestroEtiquetaPorta" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Perfil" EntityType="Self.Perfil" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Portafolio" EntityType="Self.Portafolio" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Skill" EntityType="Self.Skill" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_MaestroEtiquetaPorta_Etiqueta" Association="Self.FK_MaestroEtiquetaPorta_Etiqueta">
+            <End Role="Etiqueta" EntitySet="Etiqueta" />
+            <End Role="MaestroEtiquetaPorta" EntitySet="MaestroEtiquetaPorta" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MaestroEtiquetaPorta_Portafolio" Association="Self.FK_MaestroEtiquetaPorta_Portafolio">
+            <End Role="Portafolio" EntitySet="Portafolio" />
+            <End Role="MaestroEtiquetaPorta" EntitySet="MaestroEtiquetaPorta" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="PortafolioModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Etiqueta">
+          <Key>
+            <PropertyRef Name="IDEtiqueta" />
+          </Key>
+          <Property Name="IDEtiqueta" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Etiqueta1" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="MaestroEtiquetaPorta" Relationship="PortafolioModel.FK_MaestroEtiquetaPorta_Etiqueta" FromRole="Etiqueta" ToRole="MaestroEtiquetaPorta" />
+        </EntityType>
+        <EntityType Name="MaestroEtiquetaPorta">
+          <Key>
+            <PropertyRef Name="IDMaestroEtiquetaPorta" />
+          </Key>
+          <Property Name="IDMaestroEtiquetaPorta" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IDPortafolio" Type="Int32" />
+          <Property Name="IDEtiqueta" Type="Int32" />
+          <NavigationProperty Name="Etiqueta" Relationship="PortafolioModel.FK_MaestroEtiquetaPorta_Etiqueta" FromRole="MaestroEtiquetaPorta" ToRole="Etiqueta" />
+          <NavigationProperty Name="Portafolio" Relationship="PortafolioModel.FK_MaestroEtiquetaPorta_Portafolio" FromRole="MaestroEtiquetaPorta" ToRole="Portafolio" />
+        </EntityType>
+        <EntityType Name="Perfil">
+          <Key>
+            <PropertyRef Name="IDPerfil" />
+          </Key>
+          <Property Name="IDPerfil" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Titular" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Extracto" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="ImgTitular" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="ImgExtracto" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Portafolio">
+          <Key>
+            <PropertyRef Name="IDPortafolio" />
+          </Key>
+          <Property Name="IDPortafolio" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ImgPortafolio" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Resumen" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Link" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="MaestroEtiquetaPorta" Relationship="PortafolioModel.FK_MaestroEtiquetaPorta_Portafolio" FromRole="Portafolio" ToRole="MaestroEtiquetaPorta" />
+        </EntityType>
+        <EntityType Name="Skill">
+          <Key>
+            <PropertyRef Name="IDSkill" />
+          </Key>
+          <Property Name="IDSkill" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="skill1" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="porcentaje" Type="Int32" />
+        </EntityType>
+        <EntityContainer Name="PortafolioEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Etiqueta" EntityType="Self.Etiqueta" />
+          <EntitySet Name="MaestroEtiquetaPorta" EntityType="Self.MaestroEtiquetaPorta" />
+          <EntitySet Name="Perfil" EntityType="Self.Perfil" />
+          <EntitySet Name="Portafolio" EntityType="Self.Portafolio" />
+          <EntitySet Name="Skill" EntityType="Self.Skill" />
+          <AssociationSet Name="FK_MaestroEtiquetaPorta_Etiqueta" Association="PortafolioModel.FK_MaestroEtiquetaPorta_Etiqueta">
+            <End Role="Etiqueta" EntitySet="Etiqueta" />
+            <End Role="MaestroEtiquetaPorta" EntitySet="MaestroEtiquetaPorta" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MaestroEtiquetaPorta_Portafolio" Association="PortafolioModel.FK_MaestroEtiquetaPorta_Portafolio">
+            <End Role="Portafolio" EntitySet="Portafolio" />
+            <End Role="MaestroEtiquetaPorta" EntitySet="MaestroEtiquetaPorta" />
+          </AssociationSet>
+        </EntityContainer>
+        <Association Name="FK_MaestroEtiquetaPorta_Etiqueta">
+          <End Type="PortafolioModel.Etiqueta" Role="Etiqueta" Multiplicity="0..1" />
+          <End Type="PortafolioModel.MaestroEtiquetaPorta" Role="MaestroEtiquetaPorta" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Etiqueta">
+              <PropertyRef Name="IDEtiqueta" />
+            </Principal>
+            <Dependent Role="MaestroEtiquetaPorta">
+              <PropertyRef Name="IDEtiqueta" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MaestroEtiquetaPorta_Portafolio">
+          <End Type="PortafolioModel.Portafolio" Role="Portafolio" Multiplicity="0..1" />
+          <End Type="PortafolioModel.MaestroEtiquetaPorta" Role="MaestroEtiquetaPorta" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Portafolio">
+              <PropertyRef Name="IDPortafolio" />
+            </Principal>
+            <Dependent Role="MaestroEtiquetaPorta">
+              <PropertyRef Name="IDPortafolio" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="PortafolioModelStoreContainer" CdmEntityContainer="PortafolioEntities">
+          <EntitySetMapping Name="Etiqueta">
+            <EntityTypeMapping TypeName="PortafolioModel.Etiqueta">
+              <MappingFragment StoreEntitySet="Etiqueta">
+                <ScalarProperty Name="IDEtiqueta" ColumnName="IDEtiqueta" />
+                <ScalarProperty Name="Etiqueta1" ColumnName="Etiqueta" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MaestroEtiquetaPorta">
+            <EntityTypeMapping TypeName="PortafolioModel.MaestroEtiquetaPorta">
+              <MappingFragment StoreEntitySet="MaestroEtiquetaPorta">
+                <ScalarProperty Name="IDMaestroEtiquetaPorta" ColumnName="IDMaestroEtiquetaPorta" />
+                <ScalarProperty Name="IDPortafolio" ColumnName="IDPortafolio" />
+                <ScalarProperty Name="IDEtiqueta" ColumnName="IDEtiqueta" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Perfil">
+            <EntityTypeMapping TypeName="PortafolioModel.Perfil">
+              <MappingFragment StoreEntitySet="Perfil">
+                <ScalarProperty Name="IDPerfil" ColumnName="IDPerfil" />
+                <ScalarProperty Name="Titular" ColumnName="Titular" />
+                <ScalarProperty Name="Extracto" ColumnName="Extracto" />
+                <ScalarProperty Name="ImgTitular" ColumnName="ImgTitular" />
+                <ScalarProperty Name="ImgExtracto" ColumnName="ImgExtracto" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Portafolio">
+            <EntityTypeMapping TypeName="PortafolioModel.Portafolio">
+              <MappingFragment StoreEntitySet="Portafolio">
+                <ScalarProperty Name="IDPortafolio" ColumnName="IDPortafolio" />
+                <ScalarProperty Name="ImgPortafolio" ColumnName="ImgPortafolio" />
+                <ScalarProperty Name="Resumen" ColumnName="Resumen" />
+                <ScalarProperty Name="Link" ColumnName="Link" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Skill">
+            <EntityTypeMapping TypeName="PortafolioModel.Skill">
+              <MappingFragment StoreEntitySet="Skill">
+                <ScalarProperty Name="IDSkill" ColumnName="IDSkill" />
+                <ScalarProperty Name="skill1" ColumnName="skill" />
+                <ScalarProperty Name="porcentaje" ColumnName="porcentaje" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Portafolio.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -8,12 +9,14 @@ namespace Portafolio.Controllers
 {
     public class HomeController : Controller
     {
+        PortafolioEntities Entities = new PortafolioEntities();
         public ActionResult Index()
         {
             return View();
         }
         public PartialViewResult inicio()
         {
+            var inicio = Entities.Perfil.SingleOrDefault();
             return PartialView();
         }
         public PartialViewResult portafolio()
