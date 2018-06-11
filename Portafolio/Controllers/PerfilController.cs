@@ -27,7 +27,7 @@ namespace Portafolio.Controllers
         {
             if (!ModelState.IsValid)
             {
-                return PartialView();
+                return Json(new { success = false, Errors = GetErrorsFromModelState(ModelState), JsonRequestBehavior.AllowGet });
             }
             Perfil p = new Perfil();
             p.Extracto = perfil.Extracto;
@@ -36,9 +36,27 @@ namespace Portafolio.Controllers
             p.ImgTitular = SaveUploadedFile(perfil.imgTitular);
             Entities.Perfil.Add(p);
             Entities.SaveChanges();
-            return PartialView();
+            return Json(new { success = true, Errors = GetErrorsFromModelState(ModelState), JsonRequestBehavior.AllowGet });
         }
 
+        public Dictionary<string, object> GetErrorsFromModelState(ModelStateDictionary mState)
+        {
+            //explicar el errors
+            var errors = new Dictionary<string, object>();
+            foreach (var key in mState.Keys)
+            {
+                // Only send the errors to the client.
+                if (mState[key].Errors.Count > 0)
+                {
+                    errors[key] = mState[key].Errors;
+                }
+                else
+                {
+                    errors[key] = "true";
+                }
+            }
+            return errors;
+        }
         public ActionResult Details() {
             return PartialView();
         }

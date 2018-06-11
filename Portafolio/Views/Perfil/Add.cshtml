@@ -1,30 +1,35 @@
 ﻿
     <div class="row">
-            <div class="form-group">
-                <label>Titular</label>
-                <input type="text" class="form-control" id="Titular" name="Titular" placeholder="Titular">
-            </div>
-            <div class="form-group">
-                <label>Extracto</label>
-                <textarea class="form-control" id="Extracto" name="Extracto" placeholder="Extracto"></textarea>
-            </div>
-            <div class="form-group">
-                <label>Imagen del Titular</label>
-                <input type="file" id="imgTitular" name="imgTitular">
-
-            </div>
-            <div class="form-group">
-                <label>Imagen del Extracto</label>
-                <input type="file" id="imgExtracto" name="imgExtracto">
-
-            </div>
-            <div id="alert_success" class="alert alert-success" role="alert">Informacion procesada satisfactoriamente</div>
+    <div class="col-sm-12">
+        <div id="div_Titular" class="form-group">
+            <label>Titular</label>
+            <input type="text" class="form-control" id="Titular" name="Titular" placeholder="Titular">
+            <label id="Error_Titular" class="control-label" for="inputError2"></label>
         </div>
+        <div id="div_Extracto" class="form-group">
+            <label>Extracto</label>
+            <textarea class="form-control" id="Extracto" name="Extracto" placeholder="Extracto"></textarea>
+            <label id="Error_Extracto" class="control-label" for="inputError2"></label>
+        </div>
+        <div class="form-group">
+            <label>Imagen del Titular</label>
+            <input type="file" id="imgTitular" name="imgTitular">
+
+        </div>
+        <div class="form-group">
+            <label>Imagen del Extracto</label>
+            <input type="file" id="imgExtracto" name="imgExtracto">
+
+        </div>
+        <div id="alert_success" class="alert alert-success" role="alert">Informacion procesada satisfactoriamente</div>
+        <div id="alert_danger" class="alert alert-danger" role="alert"></div>
+    </div>
+</div>
 <script>
+    esconderMensajes();
     $("#formCreate").submit(function (e) {
         e.preventDefault();
         var parametros = new FormData($(this)[0]);
-        //CREO EL AJAX
         $.ajax({
             type: "POST",
             url: "/Perfil/Add",
@@ -35,10 +40,27 @@
             dataType: "json",
             success: function (data) {
                 if (data.success) {
-
+                    $.each(parametros, function (key, value) {
+                        $("#Error_" + key).html('');
+                        $("#div_" + key).removeClass(" has-error has-feedback");
+                    });
+                    $('#alert_success').show("fast");
                 }
                 else {
+                    //$('#alert_danger').show();
+                    //$('#alert_success').hide();
 
+                    $.each(data.Errors, function (key, value) {
+                        //VALUE VA A TRAER SOLO AQUELLOS VALORES QUE NO CUMPLAN CON LOS REQUISITOS ESTABLECIDOS EN EL MODELSTATE
+                        //CREAR EN LO POSIBLE UNA CLASE QUE GUARDE ESTE CODIGO
+                        if (value != "true") {
+                            $("#Error_" + key).html(value[value.length - 1].ErrorMessage);
+                            $("#div_" + key).addClass(" has-error has-feedback");
+                        } else {
+                            $("#Error_" + key).html('');
+                            $("#div_" + key).removeClass(" has-error has-feedback");
+                        }
+                    });
                 }
 
             },
@@ -49,4 +71,8 @@
 
         });
     });
+    function esconderMensajes() {
+        $('#alert_danger').hide();
+        $('#alert_success').hide();
+    }
 </script>
