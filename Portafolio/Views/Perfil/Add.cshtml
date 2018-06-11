@@ -1,0 +1,52 @@
+﻿
+    <div class="row">
+            <div class="form-group">
+                <label>Titular</label>
+                <input type="text" class="form-control" id="Titular" name="Titular" placeholder="Titular">
+            </div>
+            <div class="form-group">
+                <label>Extracto</label>
+                <textarea class="form-control" id="Extracto" name="Extracto" placeholder="Extracto"></textarea>
+            </div>
+            <div class="form-group">
+                <label>Imagen del Titular</label>
+                <input type="file" id="imgTitular" name="imgTitular">
+
+            </div>
+            <div class="form-group">
+                <label>Imagen del Extracto</label>
+                <input type="file" id="imgExtracto" name="imgExtracto">
+
+            </div>
+            <div id="alert_success" class="alert alert-success" role="alert">Informacion procesada satisfactoriamente</div>
+        </div>
+<script>
+    $("#formCreate").submit(function (e) {
+        e.preventDefault();
+        var parametros = new FormData($(this)[0]);
+        //CREO EL AJAX
+        $.ajax({
+            type: "POST",
+            url: "/Perfil/Add",
+            cache: false,
+            contentType: false, //importante enviar este parametro en false
+            processData: false, //importante enviar este parametro en false
+            data: parametros,
+            dataType: "json",
+            success: function (data) {
+                if (data.success) {
+
+                }
+                else {
+
+                }
+
+            },
+            error: function (data) {
+                $('#alert_danger').html('error');
+                $('#alert_danger').show("fast");
+            },
+
+        });
+    });
+</script>
